@@ -1,4 +1,8 @@
 <script setup>
+import { ref } from "vue";
+import quizezJson from "./data/quizes.json";
+
+const quizes = ref(quizezJson);
 </script>
 
 <template>
@@ -10,18 +14,13 @@
       </header>
 
       <div class="content-card">
-        
-        <div class="card">
-          <img
-            src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D"
-            alt=""
-          />
+        <div class="card" v-for="quiz in quizes" :key="quiz.id">
+          <img :src="quiz.img" :alt="quiz.title" />
           <div class="card-footer">
-            <h1>Programming</h1>
-            <p>2 Question</p>
+            <h1>{{ quiz.title }}</h1>
+            <p>{{ quiz.questions.length }} Questions</p>
           </div>
         </div>
-        
       </div>
     </main>
   </div>
