@@ -1,8 +1,15 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import quizezJson from "./data/quizes.json";
 
 const quizes = ref(quizezJson);
+const search = ref("");
+
+watch(search, () => {
+  return (quizes.value = quizezJson.filter((quiz) =>
+    quiz.title.toLowerCase().includes(search.value.toLowerCase())
+  ));
+});
 </script>
 
 <template>
@@ -10,7 +17,12 @@ const quizes = ref(quizezJson);
     <main>
       <header>
         <h1>Quiz Vue</h1>
-        <input type="text" class="input" placeholder="search..." />
+        <input
+          type="text"
+          v-model.trim="search"
+          class="input"
+          placeholder="search..."
+        />
       </header>
 
       <div class="content-card">
