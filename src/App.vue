@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import quizezJson from "./data/quizes.json";
+import card from "./components/card.vue";
 
 const quizes = ref(quizezJson);
 const search = ref("");
@@ -25,15 +26,8 @@ watch(search, () => {
         />
       </header>
 
-      <div class="content-card">
-        <div class="card" v-for="quiz in quizes" :key="quiz.id">
-          <img :src="quiz.img" :alt="quiz.title" />
-          <div class="card-footer">
-            <h1>{{ quiz.title }}</h1>
-            <p>{{ quiz.questions.length }} Questions</p>
-          </div>
-        </div>
-      </div>
+      <card :quizes="quizes"></card>
+      
     </main>
   </div>
 </template>
@@ -66,31 +60,5 @@ header input {
   background-color: rgba(115, 188, 191, 0.523);
   border: none;
   border-radius: 5px;
-}
-
-.content-card {
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 40px 0;
-  width: 100%;
-}
-
-.card {
-  border: 1px solid rgba(0, 0, 0, 0.197);
-  border-radius: 8px;
-  width: 290px;
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  border-radius: 8px 0 0 0;
-  object-fit: cover;
-}
-
-.card-footer {
-  padding: 0 10px;
 }
 </style>
