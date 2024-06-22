@@ -24,8 +24,9 @@ watch(search, () => {
         placeholder="search..."
       />
     </header>
-
-    <card :quizes="quizes"></card>
+    <div class="content-card">
+      <card v-for="quiz in quizes" :key="quiz.id" :quizes="quiz"></card>
+    </div>
   </div>
 </template>
 
@@ -43,5 +44,14 @@ header input {
   background-color: rgba(115, 188, 191, 0.523);
   border: none;
   border-radius: 5px;
+}
+
+.content-card {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 40px 0;
+  width: 100%;
 }
 </style>

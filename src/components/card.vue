@@ -1,29 +1,24 @@
 <script setup>
 const { quizes } = defineProps(["quizes"]);
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+function goToQuiz() {
+  router.push({ name: "quiz", params: { id: quizes.id } });
+}
 </script>
 
 <template>
-  <div class="content-card">
-    <div class="card" v-for="item in quizes" :key="item.id">
-      <img :src="item.img" :alt="item.title" />
-      <div class="card-footer">
-        <h1>{{ item.title }}</h1>
-        <p>{{ item.questions.length }} Questions</p>
-      </div>
+  <div class="card" @click="goToQuiz">
+    <img :src="quizes.img" :alt="quizes.title" />
+    <div class="card-footer">
+      <h1>{{ quizes.title }}</h1>
+      <p>{{ quizes.questions.length}} Questions</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.content-card {
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 40px 0;
-  width: 100%;
-}
-
 .card {
   border: 1px solid rgba(0, 0, 0, 0.197);
   border-radius: 8px;
