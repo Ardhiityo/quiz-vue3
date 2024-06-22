@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import quizezJson from "../data/quizes.json";
-import card from "../components/card.vue";
+import QuizCard from "../components/QuizCard.vue";
 
 const quizes = ref(quizezJson);
 const search = ref("");
@@ -25,7 +25,7 @@ watch(search, () => {
       />
     </header>
     <div class="content-card">
-      <card v-for="quiz in quizes" :key="quiz.id" :quizes="quiz"></card>
+      <QuizCard v-for="quiz in quizes" :key="quiz.id" :quizes="quiz"></QuizCard>
     </div>
   </div>
 </template>

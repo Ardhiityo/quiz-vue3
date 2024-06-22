@@ -1,0 +1,32 @@
+<template>
+  <header>
+    <h1>Questions 1/2</h1>
+    <div class="container-bar">
+      <div class="bar"></div>
+    </div>
+  </header>
+</template>
+
+<style scoped>
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-bottom: 30px;
+}
+
+.container-bar {
+  width: 100%;
+  border: 2px solid black;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.bar {
+  width: 50%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgb(96, 159, 161);
+}
+</style>
