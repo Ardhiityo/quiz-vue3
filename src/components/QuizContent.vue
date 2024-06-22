@@ -1,21 +1,15 @@
+<script setup>
+const {question} = defineProps(["question"]);
+</script>
+
 <template>
   <main>
-    <h1 class="quest">What is 1+1</h1>
+    <h1 class="quest">{{ question.text }}</h1>
 
     <div class="container-option">
-      <div class="option">
-        <p class="value-abjad">A.</p>
-        <p class="value">1</p>
-      </div>
-
-      <div class="option">
-        <p class="value-abjad">B.</p>
-        <p class="value">2</p>
-      </div>
-
-      <div class="option">
-        <p class="value-abjad">C.</p>
-        <p class="value">Aku dan kamu</p>
+      <div class="option" v-for="item in question.answers" :key="item.id">
+        <p class="value-abjad">{{ item.label }}</p>
+        <p class="value">{{ item.text }}</p>
       </div>
     </div>
   </main>
