@@ -1,6 +1,11 @@
+<script setup>
+import { defineProps} from "vue";
+const { page } = defineProps(["page"]);
+</script>
+
 <template>
   <header>
-    <h1>Questions 1/2</h1>
+    <h1>Questions {{ page }}</h1>
     <div class="container-bar">
       <div class="bar"></div>
     </div>
