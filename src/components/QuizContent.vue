@@ -1,5 +1,10 @@
 <script setup>
-const {question} = defineProps(["question"]);
+const { question } = defineProps(["question"]);
+const emit = defineEmits(["selectOption"]);
+
+function emmitSelectOption(option) {
+  emit('selectOption', option);
+}
 </script>
 
 <template>
@@ -7,7 +12,12 @@ const {question} = defineProps(["question"]);
     <h1 class="quest">{{ question.text }}</h1>
 
     <div class="container-option">
-      <div class="option" v-for="item in question.answers" :key="item.id">
+      <div
+        class="option"
+        v-for="item in question.answers"
+        :key="item.id"
+        @click="emmitSelectOption(item)"
+      >
         <p class="value-abjad">{{ item.label }}</p>
         <p class="value">{{ item.text }}</p>
       </div>

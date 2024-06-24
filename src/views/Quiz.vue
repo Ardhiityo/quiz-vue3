@@ -9,24 +9,29 @@ import quizes from "@/data/quizes.json";
 const route = useRoute();
 const getQuestions = quizes.find((q) => q.id === parseInt(route.params.id));
 const index = ref(0);
-
-// const page = ref(`${index.value + 1}/${getQuestions.questions.length}`);
-// watch(index, () => {
-//   return (page.value = `${index.value + 1}/${getQuestions.questions.length}`);
-// });
-
-// Watch digunakan untuk fetch data API / data yg berasal dari luar state
+const correctAnswere = ref(0);
 const page = computed(() => {
   return `${index.value + 1}/${getQuestions.questions.length}`;
 });
 const percentage = computed(() => {
-  return ((`${index.value + 1}` / `${getQuestions.questions.length}`) * 100) + '%';
+  return (
+    (`${index.value + 1}` / `${getQuestions.questions.length}`) * 100 + "%"
+  );
 });
+function selectOption(option) {
+  if (option.correct) {
+    correctAnswere.value++;
+  }
+  index.value++;
+}
 </script>
 
 <template>
   <QuizHeader :page="page" :percentage="percentage" />
-  <QuizContent :question="getQuestions.questions[index]" />
+  <QuizContent
+    :question="getQuestions.questions[index]"
+    @selectOption="selectOption"
+  />
   <div class="next">
     <button
       @click="index++"

@@ -1,7 +1,6 @@
 <script setup>
 import { defineProps } from "vue";
 const { page, percentage } = defineProps(["page", "percentage"]);
-console.log(typeof percentage, percentage);
 </script>
 
 <template>
