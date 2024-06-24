@@ -8,7 +8,7 @@ function emmitSelectOption(option) {
 </script>
 
 <template>
-  <main>
+ 
     <h1 class="quest">{{ question.text }}</h1>
 
     <div class="container-option">
@@ -22,14 +22,10 @@ function emmitSelectOption(option) {
         <p class="value">{{ item.text }}</p>
       </div>
     </div>
-  </main>
+
 </template>
 
 <style scoped>
-main {
-  width: 100%;
-}
-
 .container-option {
   width: 100%;
   display: flex;
@@ -44,13 +40,13 @@ main {
 
 .value-abjad {
   padding: 10px;
-  background-color: rgb(96, 159, 161);
+  background-color: rgb(110, 179, 182);
   border-radius: 5px 0 0 5px;
 }
 
 .value {
   padding: 10px;
-  background-color: rgb(110, 178, 180);
+  background-color: rgb(126, 203, 205);
   width: 100%;
   border-radius: 0 5px 5px 0;
 }
