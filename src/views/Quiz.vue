@@ -19,10 +19,13 @@ const index = ref(0);
 const page = computed(() => {
   return `${index.value + 1}/${getQuestions.questions.length}`;
 });
+const percentage = computed(() => {
+  return ((`${index.value + 1}` / `${getQuestions.questions.length}`) * 100) + '%';
+});
 </script>
 
 <template>
-  <QuizHeader :page="page" />
+  <QuizHeader :page="page" :percentage="percentage" />
   <QuizContent :question="getQuestions.questions[index]" />
   <div class="next">
     <button

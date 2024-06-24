@@ -1,13 +1,14 @@
 <script setup>
-import { defineProps} from "vue";
-const { page } = defineProps(["page"]);
+import { defineProps } from "vue";
+const { page, percentage } = defineProps(["page", "percentage"]);
+console.log(typeof percentage, percentage);
 </script>
 
 <template>
   <header>
     <h1>Questions {{ page }}</h1>
     <div class="container-bar">
-      <div class="bar"></div>
+      <div class="bar" :style="{ width: percentage }"></div>
     </div>
   </header>
 </template>
@@ -29,7 +30,7 @@ header {
 }
 
 .bar {
-  width: 50%;
+  width: 0%;
   height: 100%;
   border-radius: 5px;
   background-color: rgb(96, 159, 161);
